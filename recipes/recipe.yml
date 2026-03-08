@@ -2,9 +2,28 @@
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
 name: dact-os
 description: This is my personal OS image.
-
 base-image: quay.io/fedora-ostree-desktops/silverblue
 image-version: 43
 
 modules:
-  - type: signing # this sets up the proper policy & signing files for signed images to work fully
+  - type: signing
+  - type: dnf
+    install:
+      packages:
+        - input-remapper
+    remove:
+      packages:
+        - fedora-flathub-remote
+        - fedora-third-party
+        - gnome-software-rpm-ostree
+  - type: default-flatpaks
+    configurations:
+      - scope: system
+        install:
+          - io.github.kolunmi.Bazaar
+  - type: systemd
+    system:
+      enabled:
+        - input-remapper
+      masked:
+        - rpm-ostreed-automatic.timer
