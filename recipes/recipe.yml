@@ -18,7 +18,8 @@ modules:
       files:
         - https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
     install:
-      - brave-browser
+      packages:
+        - brave-browser
   - type: dnf
     remove:
       packages:
