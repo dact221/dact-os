@@ -10,7 +10,7 @@ modules:
   - type: dnf
     install:
       packages:
-        - input-remapper.service
+        - input-remapper
     remove:
       packages:
         - fedora-flathub-remote
@@ -37,6 +37,7 @@ modules:
   - type: systemd
     system:
       enabled:
-        - input-remapper
+        - input-remapper.service
       masked:
         - rpm-ostreed-automatic.timer
+        - flatpak-add-fedora-repos.service
