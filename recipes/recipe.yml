@@ -11,6 +11,7 @@ modules:
     install:
       packages:
         - input-remapper
+        - libappindicator-gtk3 # dependency for AppIndicator extension
     remove:
       packages:
         - fedora-flathub-remote
@@ -28,7 +29,8 @@ modules:
         - gnome-shell-extension-background-logo
   - type: default-flatpaks
     configurations:
-      - scope: system
+      - notify: false
+        scope: system
         install:
           - io.github.kolunmi.Bazaar
   - type: gnome-extensions
