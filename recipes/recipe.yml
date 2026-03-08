@@ -12,6 +12,14 @@ modules:
       packages:
         - input-remapper
         - libappindicator-gtk3 # dependency for AppIndicator extension
+  - type: dnf
+    repos:
+      cleanup: true
+      files:
+        - https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
+    install:
+      - brave-browser
+  - type: dnf
     remove:
       packages:
         - fedora-flathub-remote
