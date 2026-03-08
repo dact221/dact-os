@@ -10,17 +10,30 @@ modules:
   - type: dnf
     install:
       packages:
-        - input-remapper
+        - input-remapper.service
     remove:
       packages:
         - fedora-flathub-remote
         - fedora-third-party
+        - gnome-software
         - gnome-software-rpm-ostree
+        - gnome-tour
+        - gnome-system-monitor
+        - yelp
+        - gnome-shell-extension-common
+        - gnome-shell-extension-apps-menu
+        - gnome-shell-extension-launch-new-instance
+        - gnome-shell-extension-places-menu
+        - gnome-shell-extension-window-list
+        - gnome-shell-extension-background-logo
   - type: default-flatpaks
     configurations:
       - scope: system
         install:
           - io.github.kolunmi.Bazaar
+  - type: gnome-extensions
+    install:
+      - AppIndicator and KStatusNotifierItem Support
   - type: systemd
     system:
       enabled:
